@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seafood Menu</title>
+  <style>
+    /* General Reset */
+       /* General Reset */
+       * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000; /* Fallback color */
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Profile Section */
+    .profile {
+      display: flex;
+      align-items: center;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 20px;
+      border: 2px solid #ff5722;
+    }
+
+    .profile .details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile .details h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: #ffcc00;
+    }
+
+    .profile .details p {
+      font-size: 16px;
+      color: lightgray;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+    }
+
+    .header p {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+   
+    .category {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 15px;
+      flex: 1 1 calc(33.33% - 20px);
+      max-width: calc(29.33% - 20px);
+      text-align: center;
+      transition: transform 0.3s;
+      margin: 10px;
+    box-shadow: 0 4px 6px
+    }
+    .category:hover {
+      background: #ff5722;
+      color: white;
+    }
+
+    .category img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .food-section {
+      margin-bottom: 30px;
+    }
+
+    .food-section h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .food-card {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .food-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .food-card-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .food-card-content h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .food-card-content p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+
+    .food-card-content button {
+      background: #ff5722;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .food-card-content button:hover {
+      background: #e64a19;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .header h1 {
+        font-size: 20px;
+      }
+
+      .header p {
+        font-size: 16px;
+      }
+
+      .food-card img {
+        height: 120px;
+      }
+
+      .food-card-content h3 {
+        font-size: 16px;
+      }
+
+      .food-card-content button {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Profile Section -->
+    <div class="profile">
+      <img src="profilepics.jpg" alt="Profile Picture">
+      <div class="details">
+        <h2>Rehan Khan</h2>
+        <p>Welcome back! Ready to explore some delicious seafood?</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <h1>Hello, Rehan Khan</h1>
+      <p>What food do you want today?</p>
+    </div>
+
+    <!-- Categories -->
+    <div class="categories" id="categories">
+      <!-- Dynamic content will be added here -->
+    </div>
+  </div>
+
+  <script>
+    // Dynamic JavaScript for Food Categories
+    const categories = [
+      { name: "Fish Fry", img: "Apetizers.jpg", url: "Apetizers.html" },
+      { name: "Main Dish", img: "https://img.icons8.com/ios-filled/50/ffffff/restaurant.png", url: "maindish.html"},
+      { name: "Desserts", img: "https://img.icons8.com/ios-filled/50/ffffff/cake.png", url: "desserts.html"}
+    ];
+
+    const categoriesContainer = document.getElementById("categories");
+
+    categories.forEach(category => {
+      // Create category box
+      const categoryBox = document.createElement("div");
+      categoryBox.className = "category";
+      
+
+      // Add image
+      const img = document.createElement("img");
+      img.src = category.img;
+      img.alt = category.name;
+
+      // Add name
+      const name = document.createElement("p");
+      name.textContent = category.name;
+
+      // Append elements
+      categoryBox.appendChild(img);
+      categoryBox.appendChild(name);
+
+      // Add click event to redirect to the category's URL
+      categoryBox.addEventListener("click", () => {
+        window.location.href = category.url;
+      });
+
+      // Append to container
+      categoriesContainer.appendChild(categoryBox);
+    });
+
+  </script>
+</body>
+</html>

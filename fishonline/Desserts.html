@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seafood Menu</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000; /* Fallback color */
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Profile Section */
+    .profile {
+      display: flex;
+      align-items: center;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 20px;
+      border: 2px solid #ff5722;
+    }
+
+    .profile .details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile .details h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: #ffcc00;
+    }
+
+    .profile .details p {
+      font-size: 16px;
+      color: lightgray;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+    }
+
+    .header p {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+   
+    .category {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 15px;
+      flex: 1 1 calc(33.33% - 20px);
+      max-width: calc(29.33% - 20px);
+      text-align: center;
+      transition: transform 0.3s;
+      margin: 10px;
+    box-shadow: 0 4px 6px
+    }
+    .category:hover {
+      background: #ff5722;
+      color: white;
+    }
+
+    .category img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .food-section {
+      margin-bottom: 30px;
+    }
+
+    .food-section h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .food-card {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .food-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .food-card-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .food-card-content h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .food-card-content p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+
+    .food-card-content button {
+      background: #ff5722;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .food-card-content button:hover {
+      background: #e64a19;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .header h1 {
+        font-size: 20px;
+      }
+
+      .header p {
+        font-size: 16px;
+      }
+
+      .food-card img {
+        height: 120px;
+      }
+
+      .food-card-content h3 {
+        font-size: 16px;
+      }
+
+      .food-card-content button {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+    }
+
+        /* Footer Section */
+        footer {
+      background: #1e1e1e;
+      color: white;
+      padding: 20px 0;
+      margin-top: 30px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-container > div {
+      flex: 1 1 30%;
+    }
+
+    .footer-container h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+
+    .footer-container p {
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: lightgray;
+    }
+
+    .footer-container a {
+      color: #ff5722;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-container a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: lightgray;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .header h1 {
+        font-size: 20px;
+      }
+
+      .header p {
+        font-size: 16px;
+      }
+
+      .food-card img {
+        height: 120px;
+      }
+
+      .food-card-content h3 {
+        font-size: 16px;
+      }
+
+      .food-card-content button {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-container > div {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Profile Section -->
+    <div class="profile">
+      <img src="profilepics.jpg" alt="profilepics.jpg">
+      <div class="details">
+        <h2>Rehan khan</h2>
+        <p>Welcome back! Ready to explore some delicious seafood?</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+    <strong> <h1 >Hello,Rehan khan</h1></strong> 
+      <p>What food do you want today?</p>
+    </div>
+
+  <!-- Categories -->
+<div class="categories">
+  <div class="category">
+    <a href="Apetizers.html">
+      <img src="Apetizers.jpg" alt="Appetizer">
+    </a>
+    <p>Fish Fry</p>
+  </div>
+  
+  <div class="category">
+    <a href="maindish.html">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/restaurant.png" alt="Main Dish">
+    </a>
+    <p>Main Dish</p>
+  </div>
+
+  <div class="category">
+    <a href="Desserts.html">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/cake.png" alt="Desserts">
+    </a>
+    <p>Desserts</p>
+  </div>
+</div>
+    <!-- Popular Food -->
+    <div class="food-section">
+      <h2>Popular Food</h2>
+      <div id="popularFood" class="food-grid"></div>
+    </div>
+      
+    <br>
+    <br>
+    <br>
+    <br>
+  
+           <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <div class="info">
+        <h3>About Us</h3>
+        <p>We are passionate about delivering the freshest seafood with the best recipes. Dive into our menu and enjoy a taste of the ocean!</p>
+      </div>
+      <div class="contact">
+        <h3>Contact Us</h3>
+        <p>Email: support@seafoodmenu.com</p>
+        <p>Phone: +123-456-7890</p>
+        <p>Address: 123 Ocean Drive, Seaside City</p>
+      </div>
+      <div class="social">
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com/your-page-name" target="_blank" rel="noopener noreferrer">Facebook</a> | 
+        <a href="https://www.instagram.com/your-username" target="_blank" rel="noopener noreferrer">Instagram</a> | 
+        <a href="https://www.twitter.com/your-handle" target="_blank" rel="noopener noreferrer">Twitter</a>
+      </div>
+      
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Seafood Menu. All rights reserved.</p>
+    </div>
+  </footer>
+    
+    
+
+  <script>
+    // Dynamically populate food items
+    document.addEventListener("DOMContentLoaded", function () {
+      const foodItems = [
+        { name: "sugar desserts", img: "https://tse3.mm.bing.net/th?id=OIP.QWhdll1kwA3bj3jEWNX20gHaGy&pid=Api&P=0&h=180"},
+        { name : "icecream", img: "https://tse2.mm.bing.net/th?id=OIP.pQXHca4PpwSzj-8iJqnP5QHaKi&pid=Api&P=0&h=180" },
+        { name: "cofee",img:"https://tse3.mm.bing.net/th?id=OIP.3x1ErRuue4TzcCzaTdQ3jAHaHa&pid=Api&P=0&h=180"},
+        { name: "cake", img: "https://tse2.mm.bing.net/th?id=OIP.ItskHWvKe-CC7We6vFyQvQHaLG&pid=Api&P=0&h=180"},
+      
+        
+    ]
+      const popularFoodContainer = document.getElementById("popularFood");
+      const favoriteFoodContainer = document.getElementById("favoriteFood");
+
+      foodItems.forEach((food, index) => {
+        const card = createFoodCard(food.name, food.img);
+        if (index < 4) {
+          popularFoodContainer.appendChild(card);
+        } else {
+          favoriteFoodContainer.appendChild(card);
+        }
+      });
+    });
+
+    function createFoodCard(name, imgSrc) {
+      const card = document.createElement("div");
+      card.className = "food-card";
+
+      const img = document.createElement("img");
+      img.src = imgSrc || "https://via.placeholder.com/300x200";
+      img.alt = name;
+
+      const content = document.createElement("div");
+      content.className = "food-card-content";
+
+      const title = document.createElement("h3");
+      title.textContent = name;
+
+      const button = document.createElement("button");
+      button.textContent = "Order Now";
+      button.addEventListener("click", () => {
+        alert(`Order placed for: ${name}`);
+      });
+
+      content.appendChild(title);
+      content.appendChild(button);
+
+      card.appendChild(img);
+      card.appendChild(content);
+
+      return card;
+    }
+  </script>
+</body>
+</html>
